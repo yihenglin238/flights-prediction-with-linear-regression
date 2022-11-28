@@ -8,37 +8,37 @@ Created on Sat Nov 26 14:35:15 2022
 
 import numpy as np
 import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-import seaborn as sns
+#import seaborn as sns
+#import matplotlib.pyplot as plt
+#import seaborn as sns
 
 flights = pd.read_csv('Clean_Dataset.csv').drop(columns='Unnamed: 0')
 
 
-flights.hist(bins=50, figsize=(20,15))
-plt.show()
+#flights.hist(bins=50, figsize=(20,15))
+#plt.show()
 
-corr = flights.corr()
-mask = np.triu(np.ones_like(corr,dtype = bool))
+#corr = flights.corr()
+#mask = np.triu(np.ones_like(corr,dtype = bool))
 
-plt.figure(dpi=100)
-plt.title('Correlation Analysis')
-sns.heatmap(corr,mask=mask,annot=False,lw=0,linecolor='white',cmap='magma',fmt = "0.2f")
-plt.xticks(rotation=90)
-plt.yticks(rotation = 0)
-plt.show()
+#plt.figure(dpi=100)
+#plt.title('Correlation Analysis')
+#sns.heatmap(corr,mask=mask,annot=False,lw=0,linecolor='white',cmap='magma',fmt = "0.2f")
+#plt.xticks(rotation=90)
+#plt.yticks(rotation = 0)
+#plt.show()
 
-from sklearn.model_selection import train_test_split
-train_set, test_set = train_test_split(flights, test_size=0.2, random_state=42)
-X_train = train_set.drop("price", axis=1);
-y_train = train_set["price"].copy();
-X_test = test_set.drop("price", axis=1);
-y_test = test_set["price"].copy();
+#from sklearn.model_selection import train_test_split
+#train_set, test_set = train_test_split(flights, test_size=0.2, random_state=42)
+#X_train = train_set.drop("price", axis=1);
+#y_train = train_set["price"].copy();
+#X_test = test_set.drop("price", axis=1);
+#y_test = test_set["price"].copy();
 
 
 
-flights_num = flights.select_dtypes(include=[np.number]).drop("price", axis=1)
-flights_cat = flights.select_dtypes(include=["object"])
+#flights_num = flights.select_dtypes(include=[np.number]).drop("price", axis=1)
+#flights_cat = flights.select_dtypes(include=["object"])
 """
 from sklearn.preprocessing import OneHotEncoder
 
@@ -128,23 +128,23 @@ from sklearn.linear_model import SGDRegressor
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 
-lin_reg = LinearRegression()
-lin_reg.fit(X_train, y_train)
-y_pred_lr = lin_reg.predict(X_test)
-print(y_pred_lr)
-lin_rmse = np.sqrt(mean_squared_error(y_test, y_pred_lr))
-print(lin_rmse)
-score = lin_reg.score(X_test, y_test)  
-print(score)  
+#lin_reg = LinearRegression()
+#lin_reg.fit(X_train, y_train)
+#y_pred_lr = lin_reg.predict(X_test)
+#print(y_pred_lr)
+#lin_rmse = np.sqrt(mean_squared_error(y_test, y_pred_lr))
+#print(lin_rmse)
+#score = lin_reg.score(X_test, y_test)  
+#print(score)  
 
-tree_reg = DecisionTreeRegressor(random_state = 42)
-tree_reg.fit(X_train, y_train)
-y_pred_dt = tree_reg.predict(X_test)
-print(y_pred_dt)
-tree_rmse = np.sqrt(mean_squared_error(y_test, y_pred_dt))
-print(tree_rmse)
-score = tree_reg.score(X_test, y_test)  
-print(score)  
+#tree_reg = DecisionTreeRegressor(random_state = 42)
+#tree_reg.fit(X_train, y_train)
+#y_pred_dt = tree_reg.predict(X_test)
+#print(y_pred_dt)
+#tree_rmse = np.sqrt(mean_squared_error(y_test, y_pred_dt))
+#print(tree_rmse)
+#score = tree_reg.score(X_test, y_test)  
+#print(score)  
 
 forest_reg = RandomForestRegressor(n_estimators=100, random_state=42)
 forest_reg.fit(X_train, y_train)
@@ -155,13 +155,18 @@ print(forest_rmse)
 score = forest_reg.score(X_test, y_test)  
 print(score)  
 
-mySGDModel = SGDRegressor()
-mySGDModel.fit(X_train,y_train)
-y_predict = mySGDModel.predict(X_test)
-print(y_predict)
-mse = mean_squared_error(y_test, y_predict)
-mySGDModel_rmse = np.sqrt(mse)
-print(mySGDModel_rmse)
-score = mySGDModel.score(X_test, y_test)  
-print(score)  
+#mySGDModel = SGDRegressor()
+#mySGDModel.fit(X_train,y_train)
+#y_predict = mySGDModel.predict(X_test)
+#print(y_predict)
+#mse = mean_squared_error(y_test, y_predict)
+#mySGDModel_rmse = np.sqrt(mse)
+#print(mySGDModel_rmse)
+#score = mySGDModel.score(X_test, y_test)  
+#print(score)  
+
+#saving forest_reg model
+import pickle
+#pickle.dump(forest_reg, open("flight_ticket_price_predict_model.sav", "wb"))
+pickle.dump(le, open("le.sav", "wb"))
 
